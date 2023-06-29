@@ -6,7 +6,21 @@
   <br/>
 </p>
 
-# pdfkit-table
+# pdfkit-table (Forked Version)
+
+This version allows developer to align the cell with prepareRow
+
+### Example
+```typescript
+doc.table(table, {
+  prepareRow: (row, indexColumn, indexRow, rectRow, rectCell) => {
+    if (indexColumn !== 0) {
+      rectCell.align = 'right';
+    }
+    return doc.font('Helvetica', 8);
+  },
+});
+```
 
 #### Generate pdf tables with javascript (PDFKIT plugin)
 Helps to draw informations in simple tables using pdfkit. #server-side.
