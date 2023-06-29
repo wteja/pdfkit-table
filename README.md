@@ -11,6 +11,9 @@
 This version allows developer to align the cell with prepareRow
 
 ### Example
+
+For example, we align text to the right if column index more than zero.
+
 ```typescript
 doc.table(table, {
   prepareRow: (row, indexColumn, indexRow, rectRow, rectCell) => {
