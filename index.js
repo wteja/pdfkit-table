@@ -604,6 +604,7 @@ class PDFDocumentWithTables extends PDFDocument {
                   y: startY - columnSpacing - (rowDistance * 2), 
                   width: width, 
                   height: this.headerHeight + columnSpacing,
+                  align,
                 };
 
                 // add background
@@ -694,6 +695,7 @@ class PDFDocumentWithTables extends PDFDocument {
               y: startY - columnSpacing - (rowDistance * 2),
               width: width,
               height: rowHeight + columnSpacing,
+              align,
             }
     
             // allow the user to override style for rows
@@ -757,11 +759,13 @@ class PDFDocumentWithTables extends PDFDocument {
             }
             // ------------------------------------------------------------------------------
     
+            align = rectCell.align || align;
+
             this.text(text, 
               lastPositionX + (cellPadding.left), 
               startY + topTextToAlignVertically, {
               width: width - (cellPadding.left + cellPadding.right),
-              align: align,
+              align,
             });  
             
             lastPositionX += width; 
@@ -839,6 +843,7 @@ class PDFDocumentWithTables extends PDFDocument {
               y: startY - columnSpacing - (rowDistance * 2),
               width: columnSizes[index],
               height: rowHeight + columnSpacing,
+              align,
             }
     
             prepareRowBackground(table.headers[index], rectCell);
@@ -870,12 +875,14 @@ class PDFDocumentWithTables extends PDFDocument {
               topTextToAlignVertically = rowDistance - columnSpacing + (rectCell.height - heightText) / 2;  
             }
             // ------------------------------------------------------------------------------
-    
+
+            align = rectCell.align || align;
+            
             this.text(cell, 
               lastPositionX + (cellPadding.left),
               startY + topTextToAlignVertically, {
               width: columnSizes[index] - (cellPadding.left + cellPadding.right),
-              align: align,
+              align,
             });
     
             lastPositionX += columnSizes[index];

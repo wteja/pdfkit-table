@@ -7,6 +7,7 @@ declare module 'pdfkit-table'
 		y: number;
 		width: number;
 		height: number;
+		align: string;
 	}
 
 	interface Header {
